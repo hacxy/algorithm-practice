@@ -1,9 +1,8 @@
-import { ArrayStack } from '../dist/index.js';
-const stack = new ArrayStack();
+import { ArrayQueue } from '../dist/index.js';
+const arrayQueue = new ArrayQueue();
 
-stack.push('a');
-stack.push('b');
-stack.push('c');
-console.log(stack.pop());
-console.log(stack.peek());
-console.log(stack.size());
+arrayQueue.enqueue(1);
+arrayQueue.enqueue(3);
+arrayQueue.enqueue(2);
+console.log(arrayQueue.dequeue());
+console.log(arrayQueue.peek());
