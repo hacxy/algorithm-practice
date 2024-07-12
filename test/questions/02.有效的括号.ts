@@ -1,3 +1,4 @@
+// leetcode 20.有效的括号
 const isValid = (s: string) => {
   const stack: string[] = [];
   for (let i = 0; i < s.length; i++) {

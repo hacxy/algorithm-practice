@@ -10,7 +10,7 @@ export const hotPotato = (names: string[], num: number) => {
   }
 
   while (queue.size() > 1) {
-    for (let i = 0; i < num; i++) {
+    for (let i = 0; i < num - 1; i++) {
       const name = queue.dequeue()!;
       queue.enqueue(name);
     }
