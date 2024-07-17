@@ -1,7 +1,7 @@
 class Node<T> {
   value: T;
   next: Node<T> | null;
-  constructor(value) {
+  constructor(value: T) {
     this.value = value;
     this.next = null;
   }
@@ -10,6 +10,7 @@ class Node<T> {
 export class LinkedList<T> {
   head: Node<T> | null = null;
   private size: number = 0;
+
   append(value: T) {
     const newNode = new Node<T>(value);
     if (this.head === null) {
@@ -23,6 +24,7 @@ export class LinkedList<T> {
     }
     this.size++;
   }
+
   traverse() {
     let currentNode = this.head;
     const values: T[] = [];
@@ -42,17 +44,40 @@ export class LinkedList<T> {
       this.head = newNode;
     } else {
       let currentNode = this.head;
+      let preNode = this.head;
       let i = 0;
-      while (i < position - 1) {
-        currentNode = currentNode!.next;
-        i++;
+      while (i++ < position && currentNode) {
+        preNode = currentNode;
+        currentNode = currentNode.next;
       }
-      newNode.next = currentNode!.next;
-      currentNode!.next = newNode;
+      preNode!.next = newNode;
+      newNode.next = currentNode;
     }
     this.size++;
     return true;
   }
+
+  // 删除
+  removeAt(position: number): Node<T> | null {
+    if (position > this.size || position < 0) return null;
+    let index = 0;
+    let preNode = this.head;
+    let currentNode = this.head;
+
+    if (position === 0) {
+      const oldHead = this.head;
+      this.head = this.head!.next!;
+      return oldHead;
+    } else {
+      while (index++ < position && currentNode) {
+        preNode = currentNode;
+        currentNode = currentNode.next;
+      }
+      preNode!.next = currentNode!.next;
+      return currentNode;
+    }
+  }
+
   get length() {
     return this.size;
   }

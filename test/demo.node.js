@@ -16,7 +16,14 @@ linkedList.append(1);
 linkedList.append(4);
 // console.log(linkedList.head);
 linkedList.insert(100, 0);
-linkedList.insert(1111, 2);
+// linkedList.insert(1111, 2);
 linkedList.insert(2222, 1);
-linkedList.insert(3333, 8);
+linkedList.insert(3333, 7);
+
+linkedList.traverse();
+
+linkedList.removeAt(2);
+linkedList.traverse();
+
+linkedList.removeAt(0);
 linkedList.traverse();
