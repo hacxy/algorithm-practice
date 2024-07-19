@@ -78,6 +78,14 @@ export class LinkedList<T> {
     }
   }
 
+  appendAtHead(value: T) {
+    const newNode = new Node<T>(value);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.size++;
+  }
+
+  // appendAtTail(value: T) {}
   get length() {
     return this.size;
   }
